@@ -4,8 +4,14 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
 
+export const simpleLightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});
+
 export function createGallery(images) {
-  return images
+  const galleryImg = images
     .map(
       ({
         webformatURL,
@@ -42,15 +48,8 @@ export function createGallery(images) {
         `
     )
     .join('');
-}
 
-export function changeGallery(images) {
-  gallery.insertAdjacentHTML('beforeend', createGallery(images));
-  const simpleLightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionPosition: 'bottom',
-    captionDelay: 250,
-  });
+  gallery.insertAdjacentHTML('beforeend', galleryImg);
   simpleLightbox.refresh();
 }
 

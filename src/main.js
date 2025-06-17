@@ -6,7 +6,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { getImagesByQuery } from './js/pixabay-api';
 import {
-  changeGallery,
+  createGallery,
   clearGallery,
   showLoader,
   hideLoader,
@@ -42,7 +42,7 @@ function changeSubmit(event) {
     .then(res => {
       console.log(res);
 
-      const dataHits = res.data.hits;
+      const dataHits = res.hits;
       if (dataHits.length === 0 || valueName === '') {
         iziToast.show({
           message:
@@ -52,7 +52,7 @@ function changeSubmit(event) {
         });
         return;
       }
-      changeGallery(res.data.hits);
+      createGallery(res.hits);
     })
     .catch(error => {
       console.log(error);

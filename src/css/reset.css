@@ -145,7 +145,7 @@ img {
 .loader:after {
   color: #ff3d00;
   transform: rotateY(70deg);
-  animation-delay: 0.4s;
+  /* animation-delay: 0.4s; */
 }
 
 @keyframes rotate {
